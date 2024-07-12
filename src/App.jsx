@@ -10,7 +10,7 @@ function App() {
     { path: "/signup", element: <Signup/> },
     { path: "/preview", element: <Preview /> },
     { path: "/dashboard", element: <Dashboard /> },
-    { path: "/landing", element: <Landing /> },
+    { path: "/", element: <Landing /> },
     {path:  "/signin", element:<Signin/>}
   ]);
 

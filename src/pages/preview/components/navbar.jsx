@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <motion.div
-              className="text-white text-xl font-bold"
+              className="text-white text-2xl font-bold"
               whileHover={{ scale: 1.1 }}
             >
               OmniLorie

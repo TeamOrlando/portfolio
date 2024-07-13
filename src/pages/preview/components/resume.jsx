@@ -1,15 +1,3 @@
-// const Resume = () => {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }
-
-// export default Resume
-
-
-
 import { motion } from 'framer-motion';
 
 const skills = [
@@ -40,7 +28,7 @@ const education = [
 
 const Resume = () => {
   return (
-    <div className="bg-black text-white p-8 md:p-16">
+    <div id='resume' className="bg-black text-white p-8 md:p-16">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <motion.div className="space-y-4">
           <h2 className="text-2xl font-bold">Software Skills</h2>

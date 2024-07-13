@@ -8,17 +8,16 @@ import Resume from "./components/resume"
 import ScrollAnimation from "./components/scrollAnimation"
 import { motion } from "framer-motion"
 
-
 const Index = () => {
     return (
         <div className="relative overflow-hidden bg-black text-white">
             <Navbar/>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-            <Hero />
-            <About />
-            <Resume />
-            <Projects />
-            <Contact />
+                <Hero />
+                <section id="about"><About /></section>
+                <section id="resume"><Resume /></section>
+                <section id="projects"><Projects /></section>
+                <section id="contact"><Contact /></section>
             </motion.div>
             <Footer/>
             <ScrollAnimation/>

@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as ScrollLink} from 'react-scroll';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
@@ -32,9 +32,14 @@ export default function Navbar() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link to={`/${item.toLowerCase()}`}>
+                  <ScrollLink
+                    to={item.toLowerCase()}
+                    smooth={true}
+                    duration={500}
+                    className="cursor-pointer"
+                  >
                     {item}
-                  </Link>
+                  </ScrollLink>
                 </motion.div>
               ))}
             </div>
@@ -71,9 +76,15 @@ export default function Navbar() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link to={`/${item.toLowerCase()}`}>
+              <ScrollLink
+                  to={item.toLowerCase()}
+                  smooth={true}
+                  duration={500}
+                  className="cursor-pointer"
+                  onClick={() => setIsOpen(false)}
+                >
                   {item}
-                </Link>
+                </ScrollLink>
               </motion.div>
             ))}
           </div>

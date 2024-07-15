@@ -1,5 +1,4 @@
 // 
-import React from "react";
 import { UserPlusIcon } from "lucide-react";
 import signup from "../../assets/images/signup.jpg";
 import { useNavigate } from "react-router-dom";

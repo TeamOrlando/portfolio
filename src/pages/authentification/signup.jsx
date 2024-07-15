@@ -3,6 +3,7 @@ import signup from "../../assets/images/signup.jpg"
 import { useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 
+
 const Signup = () => {
     const navigate = useNavigate()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();

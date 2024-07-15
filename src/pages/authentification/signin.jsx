@@ -5,31 +5,42 @@ import signup from "../../assets/images/signup.jpg";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
+import { apiLogin } from "../../services/auth";
 
 const Signup = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data);
+        try {
+            const res = await apiLogin({
+                email: data.email,
+                password: data.password
+            })
+            console.log("Response:", res);
+          
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-800 to-black flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row w-full max-w-4xl overflow-hidden"
             >
-                <motion.div 
+                <motion.div
                     className="w-full md:w-1/2 hidden md:block relative overflow-hidden"
                     initial={{ x: "-100%" }}
                     animate={{ x: 0 }}
                     transition={{ duration: 0.7, ease: "easeOut" }}
                 >
-                    <motion.img 
+                    <motion.img
                         className="object-cover w-full h-full filter grayscale hover:grayscale-0 transition-all duration-500"
-                        src={signup} 
+                        src={signup}
                         alt="Signup"
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.5 }}
@@ -37,7 +48,7 @@ const Signup = () => {
                 </motion.div>
 
                 <div className="w-full md:w-1/2 p-8 bg-gray-100">
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.5 }}
@@ -45,7 +56,7 @@ const Signup = () => {
                     >
                         Welcome back! 🚀
                     </motion.h2>
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
@@ -54,8 +65,8 @@ const Signup = () => {
                         Enter your details to join our amazing community
                     </motion.p>
 
-                    <motion.form 
-                        onSubmit={handleSubmit(onSubmit)} 
+                    <motion.form
+                        onSubmit={handleSubmit(onSubmit)}
                         className="space-y-4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -96,7 +107,7 @@ const Signup = () => {
                         </motion.button>
                     </motion.form>
 
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.8, duration: 0.5 }}

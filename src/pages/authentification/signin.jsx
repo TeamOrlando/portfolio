@@ -1,35 +1,56 @@
 // 
-import React from "react";
+
 import { UserPlusIcon } from "lucide-react";
 import signup from "../../assets/images/signup.jpg";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
+import { apiLogin } from "../../services/auth";
+import { useState } from "react";
+
 
 const Signup = () => {
+        const [isSubmitting, setIsSubmitting] = useState(false);
+     
     const navigate = useNavigate();
+
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data);
+        setIsSubmitting(true);
+        try {
+            const res = await apiLogin({
+                userName: data.username,
+                password: data.password
+            })
+            console.log("Response:", res.data);
+            // redirect user to dashboard
+          navigate("/dashboard");
+        } catch (error) {
+            console.log(error);
+        }
+        finally{
+            setIsSubmitting(false);
+        }
     };
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-800 to-black flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row w-full max-w-4xl overflow-hidden"
             >
-                <motion.div 
+                <motion.div
                     className="w-full md:w-1/2 hidden md:block relative overflow-hidden"
                     initial={{ x: "-100%" }}
                     animate={{ x: 0 }}
                     transition={{ duration: 0.7, ease: "easeOut" }}
                 >
-                    <motion.img 
+                    <motion.img
                         className="object-cover w-full h-full filter grayscale hover:grayscale-0 transition-all duration-500"
-                        src={signup} 
+                        src={signup}
                         alt="Signup"
                         whileHover={{ scale: 1.1 }}
                         transition={{ duration: 0.5 }}
@@ -37,7 +58,7 @@ const Signup = () => {
                 </motion.div>
 
                 <div className="w-full md:w-1/2 p-8 bg-gray-100">
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.5 }}
@@ -45,7 +66,7 @@ const Signup = () => {
                     >
                         Welcome back! 🚀
                     </motion.h2>
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
@@ -54,8 +75,8 @@ const Signup = () => {
                         Enter your details to join our amazing community
                     </motion.p>
 
-                    <motion.form 
-                        onSubmit={handleSubmit(onSubmit)} 
+                    <motion.form
+                        onSubmit={handleSubmit(onSubmit)}
                         className="space-y-4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -91,12 +112,12 @@ const Signup = () => {
                             type="submit"
                             className="w-full bg-gradient-to-r from-gray-700 to-black text-white font-bold py-2 px-4 rounded-md hover:opacity-90 transition duration-300 flex items-center justify-center"
                         >
-                            <span>Sign In</span>
+                            <span> {isSubmitting?"Loading...": "Sign In"}</span>
                             <UserPlusIcon className="ml-2 h-5 w-5" />
                         </motion.button>
                     </motion.form>
 
-                    <motion.p 
+                    <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.8, duration: 0.5 }}

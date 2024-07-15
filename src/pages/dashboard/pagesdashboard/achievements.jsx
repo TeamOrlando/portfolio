@@ -1,16 +1,11 @@
+import DashboardLayout from "../layout";
 
-
-
-
-
-const Achievement = () => {
-    return (
-        <PagesLayout headerText="Achievements buttonText="Add New Achievements>
-            <span>achievements list here</span>
-        </PagesLayout>
-    );
+const Achievements = () => {
+  return (
+    <DashboardLayout headerText="Achievements buttonText=" Add New Achievements>
+      <span>achievements list here</span>
+    </DashboardLayout>
+  );
 };
 
-
-
-export default Achievement
+export default Achievements;

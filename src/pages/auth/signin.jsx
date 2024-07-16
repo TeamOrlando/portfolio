@@ -7,11 +7,13 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { apiLogin } from "../../services/auth";
 import { useState } from "react";
+import { RevolvingDot } from "react-loader-spinner";
+import { toast } from "react-toastify";
 
 
 const Signup = () => {
-        const [isSubmitting, setIsSubmitting] = useState(false);
-     
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const navigate = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -24,12 +26,17 @@ const Signup = () => {
                 password: data.password
             })
             console.log("Response:", res.data);
+            toast.success(res.data);
+            setTimeout(() => {
+                navigate("/dashboard"); 
+            },3000);
             // redirect user to dashboard
-          navigate("/dashboard");
+            
         } catch (error) {
             console.log(error);
+            toast.error(error)
         }
-        finally{
+        finally {
             setIsSubmitting(false);
         }
     };
@@ -112,7 +119,17 @@ const Signup = () => {
                             type="submit"
                             className="w-full bg-gradient-to-r from-gray-700 to-black text-white font-bold py-2 px-4 rounded-md hover:opacity-90 transition duration-300 flex items-center justify-center"
                         >
-                            <span> {isSubmitting?"Loading...": "Sign In"}</span>
+                            <span> {isSubmitting ? <RevolvingDot
+                                visible={true}
+                                height="20"
+                                width="20"
+                                color="#FFFFFF"
+                                ariaLabel="revolving-dot-loading"
+                                wrapperStyle={{
+                
+                                }}
+                                wrapperClass=""
+                            /> : "Sign In"}</span>
                             <UserPlusIcon className="ml-2 h-5 w-5" />
                         </motion.button>
                     </motion.form>

@@ -11,9 +11,9 @@ export const apiGetSkillById = async () => {
     return apiClient.get('/skills/${id}')
 };
 export const apiUpdateSkill = async (id) => {
-    return apiClient.patch('/skills/ ${id}');
+    return apiClient.patch(`/skills/ ${id}`);
 };
 
 export const apiDeleteSkill = async (id) => {
-    return apiClient.delete('/skills/${id}');
+    return apiClient.delete(`/skills/${id}`);
 }

@@ -2,12 +2,13 @@ import { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { FiEdit2 } from "react-icons/fi";
 
-
 const Skills = () => {
   const [skills, setSkills] = useState([]);
   const [skill, setSkill] = useState("");
   const [proficiency, setProficiency] = useState("Beginner");
   const [editIndex, setEditIndex] = useState(null);
+
+
 
   const handleAddSkill = (e) => {
     e.preventDefault();
@@ -41,7 +42,7 @@ const Skills = () => {
     <div className="flex gap-10 items-start justify-start w-full p-10 mx-20">
       <h2 className="text-2xl font-bold mb-6 text-center">Skills</h2>
       <div className="flex flex-col w-3/4">
-        <div className="flex justify-center rounded-lg bg-gray-600 w-full text-white p-4">
+        <div className="flex justify-center rounded-lg bg-gray-600 w-full text-white p-2">
           <div className="bg-white text-black p-8 rounded-lg shadow-lg w-full">
             <form
               className="flex gap-4 justify-between items-end"
@@ -94,7 +95,7 @@ const Skills = () => {
             </form>
           </div>
         </div>
-        <div className="w-full flex justify-center rounded-lg bg-black text-white p-2 mt-4">
+        <div className="w-full flex justify-center rounded-lg bg-black text-white p-1 mt-4">
           {skills.length ? (
             <div className="bg-white text-gray-800 p-4 w-full">
               {skills.map((skillItem, i) => (

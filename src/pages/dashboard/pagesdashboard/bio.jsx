@@ -1,4 +1,3 @@
-
 const Bio = () => {
   return (
     <div className="w-full py-4 gap-10 flex justify-center align-middle">

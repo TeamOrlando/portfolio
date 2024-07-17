@@ -2,10 +2,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Landing from "./pages/landing";
 import Preview from "./pages/preview";
 import Dashboard from "./pages/dashboard";
-import Signup from "./pages/authentification/signup";
-import Signin from "./pages/authentification/signin";
+import Signup from "./pages/auth/signup";
+import Signin from "./pages/auth/signin";
 import DashboardLayout from "./pages/dashboard/layout";
-import Achievements from "./pages/dashboard/pagesdashboard/achievements";
 import Bio from "./pages/dashboard/pagesdashboard/bio";
 import Projects from "./pages/dashboard/pagesdashboard/projects";
 import Skills from "./pages/dashboard/pagesdashboard/skills";
@@ -21,7 +20,6 @@ function App() {
       element: <DashboardLayout />,
       children: [
         { index: true, element: <Dashboard /> },
-        { path: "/dashboard/achievements", element: <Achievements /> },
         { path: "/dashboard/bio", element: <Bio /> },
         { path: "/dashboard/skills", element: <Skills /> },
         { path: "/dashboard/projects", element: <Projects /> },

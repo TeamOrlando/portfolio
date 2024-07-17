@@ -8,38 +8,55 @@ import { motion } from "framer-motion";
 import { apiCheckUsernameExists, apiSignUp } from "../../services/auth";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { RevolvingDot } from "react-loader-spinner";
+import Loader from "../../components/Loader";
+import { debounce } from "lodash";
 
 
 const Signup = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [UserNameAvailable,setUserNameAvailable] = useState(false);
-    const [usernameNotAvailable,setUsernameNotAvailable] = useState(false);
+    const [UserNameAvailable, setUserNameAvailable] = useState(false);
+    const [usernameNotAvailable, setUsernameNotAvailable] = useState(false);
+    const [isUsernameLoading, setIsUsernameLoading] = useState(false)
 
     const checkUserName = async (userName) => {
+        setIsUsernameLoading(true)
         try {
             const res = await apiCheckUsernameExists(userName);
             console.log(res.data);
             const user = res.data.user
             if (user) {
-setUsernameNotAvailable(true)
+                setUsernameNotAvailable(true);
+                setUserNameAvailable(false)
             } else {
-setUserNameAvailable(true);
+                setUserNameAvailable(true);
+                setUsernameNotAvailable(false)
             }
         } catch (error) {
             console.log(error);
+            toast.error("An error occured!");
+
+        } finally {
+            setIsUsernameLoading(false)
         }
     };
 
     const userNameWatch = watch("username");
-    console.log(userNameWatch);
 
     useEffect(() => {
-        if (userNameWatch) {
-            checkUserName(userNameWatch)
+        const debouncedSearch = debounce(async () => {
+            if (userNameWatch) {
+                await checkUserName(userNameWatch)
+            }
+        }, 1000)
+
+        debouncedSearch()
+
+        return () => {
+            debouncedSearch.cancel();
         }
+
     }, [userNameWatch]);
 
 
@@ -67,7 +84,7 @@ setUserNameAvailable(true);
 
         } catch (error) {
             console.log(error);
-            toast.error(error.message)
+            toast.error("An error occured!");
         }
         finally {
             setIsSubmitting(false);
@@ -159,12 +176,15 @@ setUserNameAvailable(true);
                             errors={errors}
                             placeholder="Enter username"
                         />
-                       {
-                        UserNameAvailable && <p className="text-green-500">Username is available!</p>
-                       }
-                       {
-                        usernameNotAvailable && <p className="text-red-500">Username is already taken!</p>
-                       }
+                        <div className="flex items-center">
+                            {isUsernameLoading && <Loader />}
+                            {
+                                UserNameAvailable && <p className="text-green-500">Username is available!</p>
+                            }
+                            {
+                                usernameNotAvailable && <p className="text-red-500">Username is already taken!</p>
+                            }
+                        </div>
                         <InputField
                             label="Password"
                             id="password"
@@ -181,17 +201,7 @@ setUserNameAvailable(true);
                             className="w-full bg-gradient-to-r from-gray-700 to-black text-white font-bold py-2 px-4 rounded-md hover:opacity-90 transition duration-300 flex items-center justify-center"
                         >
                             <span>
-                                {isSubmitting ? <RevolvingDot
-                                    visible={true}
-                                    height="20"
-                                    width="20"
-                                    color="#FFFFFF"
-                                    ariaLabel="revolving-dot-loading"
-                                    wrapperStyle={{
-
-                                    }}
-                                    wrapperClass=""
-                                />
+                                {isSubmitting ? <Loader />
                                     : "Sign Up"}</span>
                             <UserPenIcon className="ml-2 h-5 w-5" />
                         </motion.button>

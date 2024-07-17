@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { FaBriefcase, FaGraduationCap, FaCode, FaLanguage } from 'react-icons/fa';
+import { FaBriefcase, FaCode, FaLanguage } from 'react-icons/fa';
 
 const skills = [
   { name: 'Photoshop', level: 80 },
@@ -22,10 +22,6 @@ const experiences = [
   { company: 'PLANET STATIONARY & PRINTING SERVICES CO.', role: 'Senior Graphic Designer', duration: 'Jan 2014 - Apr 2016' },
   { company: 'PLAY GRAPHIC ADVERTISING AGENCY.', role: 'Graphic Designer', duration: 'Jun 2011 - Dec 2013' },
   { company: 'MARCO FLORIDA INTERNET & COMPUTERS SERVICES CO.', role: 'Graphic Designer', duration: 'Jan 2009 - May 2011' }
-];
-
-const education = [
-  { degree: 'BS/MS in Computer Science', institution: 'University of Maryland' }
 ];
 
 const Resume = () => {
@@ -53,7 +49,7 @@ const Resume = () => {
       </motion.h1>
 
       <div className="flex justify-center mb-8">
-        {['experience', 'skills', 'education'].map((tab) => (
+        {['experience', 'skills'].map((tab) => (
           <motion.button
             key={tab}
             className={`mx-2 px-4 py-2 rounded-full ${activeTab === tab ? 'bg-white text-black' : 'bg-gray-800'}`}
@@ -132,23 +128,6 @@ const Resume = () => {
           </div>
         )}
 
-        {activeTab === 'education' && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold flex items-center"><FaGraduationCap className="mr-2" /> Education</h2>
-            {education.map((edu, index) => (
-              <motion.div 
-                key={index} 
-                className="bg-gray-800 p-4 rounded-lg"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <h3 className="text-xl font-semibold">{edu.degree}</h3>
-                <p className="text-gray-400">{edu.institution}</p>
-              </motion.div>
-            ))}
-          </div>
-        )}
       </motion.div>
     </div>
   );

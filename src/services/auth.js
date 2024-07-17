@@ -5,9 +5,9 @@ export const apiSignUp = async(payload) => {
 };
 
 export const apiLogin = async(payload) => {
-    return apiClient.post("/auth/login", payload);
+    return apiClient.post("/auth/token/login", payload);
 };
 
-export const apiCheckIfUsernameExists = async(userName) => {
-    return apiCheckIfUsernameExists.get(`/auth/${userName}`);
+export const apiCheckUsernameExists = async(userName) => {
+    return apiClient.get(`/auth/${userName}`);
 };

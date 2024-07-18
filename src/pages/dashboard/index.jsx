@@ -7,6 +7,8 @@ import { MdPeople } from "react-icons/md";
 import { RiUserStarLine } from "react-icons/ri";
 
 import PagesLayout from "./layout/pagesLayout";
+import { useEffect } from "react";
+import { apiGetSkills } from "../../services/skills";
 
 const sideBarSections = [
   {
@@ -59,7 +61,22 @@ const Dashboard = () => {
             <p className="text-2xl text-gray-800 font-bold">50%</p>
           </Link>
         </div>
+
         {sideBarSections.map((eachsection, index) => {
+          try {
+            const res = await apiGetSkills()
+            console.log(res.data)
+          } catch (error) {
+            
+          }
+          const fetchSkills = async () =>
+
+          useEffect(() => {
+
+          }, [])
+
+
+          
           return (
             <div key={index} className="w-[80%] mx-auto flex flex-col my-4">
               <Link

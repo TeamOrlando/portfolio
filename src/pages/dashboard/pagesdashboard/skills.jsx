@@ -117,7 +117,9 @@ const Skills = () => {
                 </div>
               ))}
             </div>
+
           ) : (
+        
             <p>No skills added!</p>
           )}
         </div>

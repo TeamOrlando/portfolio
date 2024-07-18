@@ -7,6 +7,8 @@ const Dashboard = () => {
   const [data, setData] = useState();
   const getData = async () => {
     setIsLoading(true);
+    
+  
     try {
       const [
         totalSkills,

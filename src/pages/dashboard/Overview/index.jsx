@@ -4,6 +4,10 @@ import { apiGetSkills } from "../../../services/skills";
 import { apiGetProjects } from "../../../services/projects";
 
 
+const Skills = () => {
+    const navigate = useNavigate();
+    const [skills, setSkills]
+}
 const Overview = () => {
     const [data, setData] = useState({
         skills: 0,

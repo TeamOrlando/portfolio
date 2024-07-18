@@ -17,11 +17,11 @@ const languages = [
 ];
 
 const experiences = [
-  { company: 'WHITE FISH ADVERTISING CO.', role: 'Art Director', duration: 'Jan 2018 - Present' },
-  { company: 'PYRAMIDS SUN ADVERTISING CO.', role: 'Senior Graphic Designer', duration: 'May 2016 - Dec 2017' },
-  { company: 'PLANET STATIONARY & PRINTING SERVICES CO.', role: 'Senior Graphic Designer', duration: 'Jan 2014 - Apr 2016' },
+  { company: 'WHITE FISH ADVERTISING CO.', role: 'Digital Marketer', duration: 'Jan 2018 - Present' },
+  { company: 'PYRAMIDS SUN ADVERTISING CO.', role: 'Senior Frontend Developer', duration: 'May 2016 - Dec 2017' },
+  { company: 'PLANET STATIONARY & PRINTING SERVICES CO.', role: 'Senior Frontend Developer', duration: 'Jan 2014 - Apr 2016' },
   { company: 'PLAY GRAPHIC ADVERTISING AGENCY.', role: 'Graphic Designer', duration: 'Jun 2011 - Dec 2013' },
-  { company: 'MARCO FLORIDA INTERNET & COMPUTERS SERVICES CO.', role: 'Graphic Designer', duration: 'Jan 2009 - May 2011' }
+  { company: 'MARCO FLORIDA INTERNET & COMPUTERS SERVICES CO.', role: 'Marketing Researcher', duration: 'Jan 2009 - May 2011' }
 ];
 
 const Resume = () => {

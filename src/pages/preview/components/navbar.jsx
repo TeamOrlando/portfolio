@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Link as ScrollLink} from 'react-scroll';
 import { motion } from 'framer-motion';
+import { logo } from '../../../assets/images';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,10 +18,16 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <motion.div
-              className="text-white text-2xl font-bold"
+              className="flex items-center h-16"
               whileHover={{ scale: 1.1 }}
             >
-              OmniLorie
+              <ScrollLink
+                to="hero"
+                smooth={true}
+                duration={500}
+                className="cursor-pointer">
+              <img src={logo} alt="logo" className='h-20 w-auto'/>
+              </ScrollLink>
             </motion.div>
           </div>
           <div className="hidden md:block">

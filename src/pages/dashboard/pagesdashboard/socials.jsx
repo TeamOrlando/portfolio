@@ -1,79 +1,123 @@
 import { useState } from "react";
-import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaTwitter,
+  FaInstagram,
+  FaFacebook,
+} from "react-icons/fa";
+import PagesLayout from "../layout/pagesLayout";
 
 const Socials = () => {
-  const [socials, setSocials] = useState([]);
-  const [platform, setPlatform] = useState("");
-  const [handle, setHandle] = useState("");
-  const [editIndex, setEditIndex] = useState(null);
+  const [linkedIn, setLinkedIn] = useState("");
+  const [github, setGitHub] = useState("");
+  const [x, setX] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [facebook, setFacebook] = useState("");
 
-  const handleAddSocial = (e) => {
+  const handleSave = (e) => {
     e.preventDefault();
-    if (platform && handle) {
-      if (editIndex !== null) {
-        const updatedSocials = socials.map((item, index) =>
-          index === editIndex ? { platform, handle } : item
-        );
-        setSocials(updatedSocials);
-        setEditIndex(null);
-      } else {
-        setSocials([...socials, { platform, handle }]);
-      }
-      setPlatform("");
-      setHandle("");
-    }
-  };
-
-  const handleEditSocial = (index) => {
-    setEditIndex(index);
-    setPlatform(socials[index].platform);
-    setHandle(socials[index].handle);
-  };
-
-  const handleDeleteSocial = (index) => {
-    const updatedSocials = socials.filter((_, i) => i !== index);
-    setSocials(updatedSocials);
+    // Add any save logic here, like sending the data to an API
+    console.log("Saved:", { linkedIn, github, x, instagram, facebook });
   };
 
   return (
+    <PagesLayout>
       <div className="flex gap-10 items-start justify-start w-full p-10 mx-20">
-        <h2 className="text-2xl font-bold mb-6 text-center">
-          Social Media Handles
-        </h2>
-        <div className="flex flex-col w-3/4">
-          <div className="flex justify-center rounded-lg bg-gray-600 w-full text-white p-4">
+        <div className="flex flex-col w-3/4 mx-auto">
+          <div className="flex justify-center rounded-lg bg-gray-600 w-full text-white p-2">
             <div className="bg-white text-black p-8 rounded-lg shadow-lg w-full">
-              <form className="flex flex-col gap-4" onSubmit={handleAddSocial}>
+              <form className="flex flex-col gap-4" onSubmit={handleSave}>
                 <div className="w-full">
                   <label
                     className="block mb-1 text-sm font-medium"
-                    htmlFor="platform"
+                    htmlFor="linkedIn"
                   >
-                    Platform
+                    LinkedIn
                   </label>
-                  <input
-                    type="text"
-                    id="platform"
-                    value={platform}
-                    onChange={(e) => setPlatform(e.target.value)}
-                    className="block w-full px-3 py-2 border rounded-md text-black"
-                  />
+                  <div className="flex items-center">
+                    <FaLinkedin className="mr-2 text-blue-700" />
+                    <input
+                      type="text"
+                      id="linkedIn"
+                      value={linkedIn}
+                      onChange={(e) => setLinkedIn(e.target.value)}
+                      className="block w-full px-3 py-2 border rounded-md text-black"
+                    />
+                  </div>
                 </div>
 
                 <div className="w-full">
                   <label
                     className="block mb-1 text-sm font-medium"
-                    htmlFor="handle"
+                    htmlFor="github"
                   >
-                    Handle
+                    GitHub
                   </label>
-                  <input
-                    type="text"
-                    id="handle"
-                    value={handle}
-                    onChange={(e) => setHandle(e.target.value)}
-                    className="block w-full px-3 py-2 border rounded-md text-black"
-                  />
+                  <div className="flex items-center">
+                    <FaGithub className="mr-2 text-gray-800" />
+                    <input
+                      type="text"
+                      id="github"
+                      value={github}
+                      onChange={(e) => setGitHub(e.target.value)}
+                      className="block w-full px-3 py-2 border rounded-md text-black"
+                    />
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <label className="block mb-1 text-sm font-medium" htmlFor="x">
+                    X (formerly Twitter)
+                  </label>
+                  <div className="flex items-center">
+                    <FaTwitter className="mr-2 text-blue-500" />
+                    <input
+                      type="text"
+                      id="x"
+                      value={x}
+                      onChange={(e) => setX(e.target.value)}
+                      className="block w-full px-3 py-2 border rounded-md text-black"
+                    />
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <label
+                    className="block mb-1 text-sm font-medium"
+                    htmlFor="instagram"
+                  >
+                    Instagram
+                  </label>
+                  <div className="flex items-center">
+                    <FaInstagram className="mr-2 text-pink-500" />
+                    <input
+                      type="text"
+                      id="instagram"
+                      value={instagram}
+                      onChange={(e) => setInstagram(e.target.value)}
+                      className="block w-full px-3 py-2 border rounded-md text-black"
+                    />
+                  </div>
+                </div>
+
+                <div className="w-full">
+                  <label
+                    className="block mb-1 text-sm font-medium"
+                    htmlFor="facebook"
+                  >
+                    Facebook
+                  </label>
+                  <div className="flex items-center">
+                    <FaFacebook className="mr-2 text-blue-600" />
+                    <input
+                      type="text"
+                      id="facebook"
+                      value={facebook}
+                      onChange={(e) => setFacebook(e.target.value)}
+                      className="block w-full px-3 py-2 border rounded-md text-black"
+                    />
+                  </div>
                 </div>
 
                 <div className="text-center">
@@ -81,39 +125,15 @@ const Socials = () => {
                     type="submit"
                     className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800"
                   >
-                    {editIndex !== null ? "Update" : "Add"}
+                    Save
                   </button>
                 </div>
               </form>
             </div>
           </div>
-          <div className="w-full flex justify-center rounded-lg bg-black text-white p-2 mt-4">
-            <div className="bg-white text-gray-800 p-4 w-full">
-              {socials.map((socialItem, i) => (
-                <div
-                  key={i}
-                  className="flex justify-between items-center mb-2 p-2 border-b border-gray-300"
-                >
-                  <div>
-                    <span className="font-medium">{socialItem.platform}</span>:{" "}
-                    {socialItem.handle}
-                  </div>
-                  <div className="flex gap-2">
-                    <FaEdit
-                      className="text-blue-500 cursor-pointer hover:text-blue-700"
-                      onClick={() => handleEditSocial(i)}
-                    />
-                    <FaTrashAlt
-                      className="text-red-500 cursor-pointer hover:text-red-700"
-                      onClick={() => handleDeleteSocial(i)}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
+    </PagesLayout>
   );
 };
 

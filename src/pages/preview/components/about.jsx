@@ -44,7 +44,7 @@ const About = () => {
                         >
                             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#672731] dark:text-blue-400">About Me</h2>
                             <p className="text-lg md:text-xl leading-relaxed mb-6">
-                                Hello! I&apos;m Loretta, a passionate and motivated Junior Front-End Developer. I specialize in creating responsive, user-friendly web applications using the latest technologies. I am eager to contribute to innovative projects and continuously improve my skills. When I&apos;m not coding, I enjoy painting, hiking, and exploring new technologies. I believe in the power of teamwork and am always ready to take on new challenges.
+                                Hello! I&apos;m Loretta, a passionate and motivated Front-End Developer. I specialize in creating responsive, user-friendly web applications using the latest technologies. I am eager to contribute to innovative projects and continuously improve my skills. When I&apos;m not coding, I enjoy painting, hiking, and exploring new technologies. I believe in the power of teamwork and am always ready to take on new challenges.
                             </p>
 
                             <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -74,7 +74,7 @@ const About = () => {
 
                             <motion.a
                                 href="#contact"
-                                className="inline-block mt-8 px-6 py-3 bg-[#672731] text-white rounded-full hover:bg-blue-700 transition duration-300"
+                                className="inline-block mt-8 px-6 py-3 bg-[#672731] text-white rounded-full hover:bg-[#E49070] transition duration-300"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >

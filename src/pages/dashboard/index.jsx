@@ -7,6 +7,7 @@ import { MdPeople } from "react-icons/md";
 import { RiUserStarLine } from "react-icons/ri";
 
 import PagesLayout from "./layout/pagesLayout";
+import { useEffect, useState } from "react";
 
 const sideBarSections = [
   {
@@ -87,3 +88,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

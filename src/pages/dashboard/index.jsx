@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { apiGetExperiences } from "../../services/experience";
+import { apiGetExperiences } from "../../services/experiences";
 import { apiGetSkills } from "../../services/skills";
 
 const Dashboard = () => {

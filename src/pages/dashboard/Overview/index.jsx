@@ -1,5 +1,8 @@
-import { useState } from "react";
-import { apiGetExperiences } from "../../../services/experience";
+import { useEffect, useState } from "react";
+import { apiGetExperiences } from "../../../services/experiences";
+import { apiGetSkills } from "../../../services/skills";
+import { apiGetProjects } from "../../../services/projects";
+
 
 const Overview = () => {
     const [data, setData] = useState({
@@ -7,42 +10,49 @@ const Overview = () => {
         projects: 0,
         experiences: 0,
         socials: 0,
-    };
-    )
-}
+    })
+
 
 const [isLoading, setIsLoading] = useState(false)
-const getData = async() => {
+// anytime you async, you do trycatch
+const getData = async () => {
     setIsLoading(true)
     try {
+        const [totalSkills, totalExperiences, totalProjects] = await Promise.all([
+            apiGetExperiences(),
+            apiGetSkills(),
+            apiGetProjects(), 
+        ])
+        console.log("Total skills:", totalSkills)
        
-        const [totalSkills, 
-            totalExperiences, 
-            totalProjects,
-        ] = await Promise.all([
-            apiGetSkills,
-            apiGetExperience,
-            apiGetProjects,
-        ]);
 
         const newData = {
          skills: totalSkills.length,
         projects: totalProjects.length,
         experiences: totalExperiences.length,
-        socials: totalSocials.length,
         };
+        console.log(newData)
 
         setData(newData);
+
     } catch (error) {
         console.log(error)
+
     }finally{
         setIsLoading(false)
     }
+     
+    
+    {
+        isLoading ? <PageLoader/>
+    }
+    
 
 };
 
 useEffect(() => {
-    //getData();
+    getData()
+}, []) 
 }
 
 export default Overview

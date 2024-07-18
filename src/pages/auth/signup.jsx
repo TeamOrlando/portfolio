@@ -122,7 +122,7 @@ const Signup = () => {
                         transition={{ delay: 0.2, duration: 0.5 }}
                         className="text-3xl font-bold text-gray-800 mb-2 text-center"
                     >
-                        Let`&apos;`s get started!
+                        Let's get started!
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0 }}
